@@ -14,6 +14,7 @@ class Graph{
     std::set<int> grey;   
     /* Container de nodos "con color" negro. */
     std::set<int> black;
+    
 	public:
 		/* Constructor */
 		explicit Graph(int V);

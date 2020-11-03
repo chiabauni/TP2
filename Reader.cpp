@@ -82,7 +82,6 @@ void Reader::findRetAndJumpLabels(Graph& G, std::fstream& file) {
 		if (line == "") {
 			continue;
 		} else if (ret_found != std::string::npos) {
-
 		} else if (jump_found != std::string::npos) {
 			findJumpLabels(G, line, current_node);
 		} else {

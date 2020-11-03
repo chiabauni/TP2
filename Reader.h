@@ -59,6 +59,7 @@ class Reader : public Thread {
 	una unica etiqueta y se agrega una aristaque va de la linea actual
 	a la siguiente linea. */
     void findJumpLabels(Graph& G, std::string line, int current_node);
+    
 	public:
 		/* Constructor */
         Reader(FilesToProcessProtected &files, 

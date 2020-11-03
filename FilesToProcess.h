@@ -10,6 +10,7 @@ class FilesToProcessProtected {
         std::mutex m;
         /* Vector con los nombres de los archivos. */        
         std::vector<std::string> filesToProcess;
+        
     public:
     	/* Constructor */
         explicit FilesToProcessProtected(std::vector<std::string>& 

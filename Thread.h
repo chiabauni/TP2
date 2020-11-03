@@ -6,6 +6,7 @@
 class Thread {
     private:
         std::thread thread;
+        
     public:
         /* Constructor */
         Thread();
@@ -27,7 +28,8 @@ class Thread {
         /* Hace un join con el hilo de ejecuccion. */
         void join();
 
-        /* Metodo sobre el cual se va a producir un override por las clases hijas. */
+        /* Metodo sobre el cual se va a producir un override por 
+        las clases hijas. */
         virtual void run() = 0;
 };
 #endif
