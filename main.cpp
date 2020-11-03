@@ -1,28 +1,38 @@
 #include <map>
-#include "Graph.h"
+#include <string>
+#include <cstdlib>
+#include <iostream>
 #include "Reader.h"
-
-
-
+#include "Thread.h"
+//------------------------------------------------------------------------------
 int main(int argc, char *argv[]) {
-	//File f("all_addr_modes.bpf","rt");
-	//std::fstream file;
-	//std::vector<std::string> filenames (argc);
-	//for (int i = 1; i <argc ; i++) {
-		//vector[i] = argv[i];
-	//}
-	Reader reader;
-	int current_node = 0;
-	current_node = reader.findLabels(argv[1], current_node);
-	int V= current_node;
-	Graph G(V);
-	int result = reader.parseText(G, argv[1]);
-	if(result == CYCLIC) {
-		std::cout << "FAIL: cycle detected"<< '\n'; 
-	} else if (result == INSTR) {
-		std::cout << "FAIL: unused instruction detected"<< '\n';
-	} else if (result == GOOD) {
-		std::cout << "GOOD"<< '\n';
+	std::vector<std::string> filesToProcess;
+	for (int i = 2; i <argc ; i++) {
+		filesToProcess.push_back(argv[i]);
 	}
-	return 0;
+	int N = std::atoi(argv[1]);
+	FilesToProcessProtected files(filesToProcess);
+	ProcessedFilesProtected results;
+	std::vector<Thread*> threads;
+
+	for (int i = 0; i < N; ++i) {
+        threads.push_back(new Reader(files, results));
+    }
+    
+    for (int i = 0; i < N; ++i) {
+        threads[i]->start();
+    }
+
+    for (int i = 0; i < N; ++i) {
+        threads[i]->join();
+        delete threads[i];
+    }
+    
+    std::vector<std::string> result = results.getResult();
+    std::sort(result.begin(), result.end());
+    std::vector<std::string>::iterator it;
+    for (it = result.begin(); it != result.end(); it++) {
+    	std::cout << *it;
+    }
+    return 0;
 }
