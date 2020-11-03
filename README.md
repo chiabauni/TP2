@@ -109,7 +109,7 @@ A la hora de la resolución del trabajo planteado, primero comencé a diseñar u
 - **Reader**: contiene las funciones para parsear el texto. Primero hay una función findLabels que se encarga de recorrer todo el archivo en busca de las etiquetas y las guarda en un diccionario con su correspondiente numero de linea. Luego esta la función parseText que recorre nuevamente el archivo esta vez en busca de instrucciones jump y ret y se encarga de agregar las aristas correspondientes del grafo.
 - **Graph**: contiene las funciones para crear y recorrer el grafo. Tiene la funcion addEdge() que permite crear una arista de un nodo hacia otro. Ademas tiene la función isCyclic() con la cual la detección de ciclos se reduce tan solo a una búsqueda DFS. Finalmente la función unusedInstruction() verifica si quedo algún nodo sin visitar, detectando así una instrucción no utilizada.
 
-![imagen1.png]
+![imagen1.png](https://github.com/chiabauni/TP2/blob/main/imagen1.png)
 
 Una vez que esta primera parte funciono correctamente, comencé con la implementación de los hilos. Para esto fue necesario crear las siguientes clases:
 
@@ -124,4 +124,4 @@ Ademas una modificación importante hecha fue hacer que el objeto Reader sea un 
 
 El diseño final consta de 6 clases con responsabilidades claras y un acoplamiento razonable. Los mismos se muestran a continuación:
 
-![imagen2.png]
+![imagen2.png](https://github.com/chiabauni/TP2/blob/main/imagen2.png)
